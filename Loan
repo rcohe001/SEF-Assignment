@@ -1,0 +1,37 @@
+package Application;
+
+import java.util.ArrayList;
+
+
+public class Loan {
+private int loanID = 0000;
+private int rentalDate;
+ArrayList<Integer> loan = new ArrayList<Integer>();
+
+
+public void addLoanID(){
+	loan.add(loanID);
+	loanID = loanID + 1;
+}
+public void printLoanID(){
+	System.out.println("***LOAN IDs***");
+	for(int i = 0 ; i > loan.size(); i++){
+		System.out.println();
+		System.out.println(loan.get(i));
+	}
+}
+
+public int getLoanID() {
+	return loanID;
+}
+public void setLoanID(int loanID) {
+	this.loanID = loanID;
+}
+public int getRentalDate() {
+	return rentalDate;
+}
+public void setRentalDate(int rentalDate) {
+	this.rentalDate = rentalDate;
+}
+
+}
