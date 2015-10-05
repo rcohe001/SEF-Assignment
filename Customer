@@ -28,7 +28,7 @@ public class Customer {
 		  
 		   return rating; 
 	   }
-	   public double CalcDisc(double amt)
+	   public double CalcDisc(int amt)
 	   {
 		   if(rating == "Premium"){
 			   amt-= amt * 0.1;
