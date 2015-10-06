@@ -1,0 +1,12 @@
+public class Movies {
+    public static void loadMovie(VideoStore videoStore,
+          String title,
+          int year,
+          String genre) {
+        
+        System.out.println("Adding movie: \"" + title + "\"");
+        videoStore.addMovie(title, year, genre);
+        System.out.println("***VideoStore Database***");  
+        System.out.println(videoStore);
+        System.out.println();
+    }
