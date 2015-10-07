@@ -1,0 +1,59 @@
+package VideoRental;
+
+public class MockMovie {
+	
+	private String title;
+	private double rentCharged;
+	private int rentPeriod;
+	private int copies;
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public double getRentCharged() {
+		return rentCharged;
+	}
+
+	public void setRentCharged(double rentCharged) {
+		this.rentCharged = rentCharged;
+	}
+
+	public int getRentPeriod() {
+		return rentPeriod;
+	}
+
+	public void setRentPeriod(int rentPeriod) {
+		this.rentPeriod = rentPeriod;
+	}
+
+	public int getCopies() {
+		return copies;
+	}
+
+	public void setCopies(int copies) {
+		this.copies = copies;
+	}
+
+	public double getOverdueFee() {
+		return overdueFee;
+	}
+
+	public void setOverdueFee(double overdueFee) {
+		this.overdueFee = overdueFee;
+	}
+
+	private double overdueFee;
+
+	public MockMovie(String title, double rentCharged, int rentPeriod, int copies, double overdueFee){
+		this.title = title;
+		this.rentCharged = rentCharged;
+		this.rentPeriod = rentPeriod;
+		this.copies = copies;
+		this.overdueFee= overdueFee;
+		
+	}
+}
