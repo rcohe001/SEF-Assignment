@@ -6,12 +6,14 @@ import java.util.Scanner;
 public class VideoRentalSystem {
 
 	private ArrayList<Customer> custs = new ArrayList<Customer>();
+	private ArrayList<Movie> movie = new ArrayList<Movie>();
 	private ArrayList<Clerk> emp = new ArrayList<Clerk>();
 	private Clerk clerk = null;
 	
 	private static final Scanner sc = new Scanner(System.in);
 	
     public ArrayList<Customer> getCustomers() { return custs; } 
+    public ArrayList<Movie> getMovie() { return movie; } 
     public ArrayList<Clerk> getClerks() { return emp; } 
     
 	
@@ -23,6 +25,14 @@ public class VideoRentalSystem {
         return null;
     }
 	
+    public Movie getMovie(String title)
+    {
+        for (int i=0; i<movie.size(); i++)
+           if ( movie.get(i).getMovTitle().compareTo(title)==0)
+              return movie.get(i);
+        return null;
+    }
+    
 	public static void main(String[] args) {
 		  VideoRentalSystem f = new VideoRentalSystem();
 	       f.go();
@@ -197,9 +207,37 @@ public class VideoRentalSystem {
 
 		      } while (selection != 'X');
 	   }
-	   private static final void addMovie()
+	   private void addMovie()
 	   {
 		   
+		   
+		           System.out.println("****** Add new movie ******");
+		           System.out.println("Enter Video Title : ");
+		               String movTitle = sc.nextLine();
+		           
+		           System.out.print("Enter Movie Category : ");
+		               String category = sc.nextLine();
+		               
+		           System.out.print("rental-charge : ");
+		               Double rentalCharge = sc.nextDouble();
+		               
+		           System.out.print("rental-period : ");
+		               Double rentalPeriod = sc.nextDouble();
+		           
+		           System.out.print("year-of-release : ");
+		               int yearOfRelease = sc.nextInt();
+		               
+		           System.out.print("overdue-charge : ");
+		               Double overdueCharge = sc.nextDouble();
+		               
+		               //Stores all the details in an array
+		               Movie objt = new Movie(movTitle, category, rentalCharge, rentalPeriod, yearOfRelease, overdueCharge);
+		               movie.add(objt);
+		               
+		           
+		           System.out.print("Video details stored successfully ");
+		           
+		       
 	   }
 	   private void addCustomer()
 	   {
