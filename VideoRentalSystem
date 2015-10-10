@@ -1,5 +1,6 @@
 package VideoRental;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class VideoRentalSystem {
 	private ArrayList<Movie> movie = new ArrayList<Movie>();
 	private ArrayList<Clerk> emp = new ArrayList<Clerk>();
 	private Clerk clerk = null;
+	public Loan loan = new Loan();
 	
 	private static final Scanner sc = new Scanner(System.in);
 	
@@ -33,12 +35,12 @@ public class VideoRentalSystem {
         return null;
     }
     
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		  VideoRentalSystem f = new VideoRentalSystem();
 	       f.go();
 	   }	
 		 // variables required to process user's menu selection
-	public void go()
+	public void go() throws ParseException
 	   {
 	      String input;
 	      char selection = '\0';
@@ -111,7 +113,7 @@ public class VideoRentalSystem {
 	      } while (selection != 'X');
 
 	   }
-	 public void login()
+	 public void login() throws ParseException
 	   {
 		  System.out.println("*** Please Enter Login details ***"); 
 	      System.out.print("Enter username : ");  
@@ -135,7 +137,7 @@ public class VideoRentalSystem {
 	      sc.nextLine();
 	        
 	      }
-	   private void clerkMenu()
+	   private void clerkMenu() throws ParseException
 	   {
 		   
 		   
@@ -150,6 +152,8 @@ public class VideoRentalSystem {
 		         System.out.println("");
 		         System.out.println("A - Add Movie");
 		         System.out.println("B - Add Customer");
+		         System.out.println("C - Checkout Movie");
+		         System.out.println("D - Return movie");
 		         System.out.println("X - Exit Program");
 		         System.out.println();
 
@@ -190,7 +194,19 @@ public class VideoRentalSystem {
 		               // call displayTourSummary() helper method
 		            	addCustomer();
 		               break;
-
+		               
+		            case 'C':
+		            	System.out.println("Enter due date: 'dd-MM-yyyy'");
+		            	loan.dateDue = sc.nextLine();
+		            	loan.enterDueDate(loan.dateDue);
+		            	loan.printMovieDetails();
+		            	break;
+		            case 'D':
+		            	System.out.println("Due date: " + loan.getDateDue());
+		            	loan.enterActualDate();
+		            	loan.calcFine();
+		            	System.out.println("You have been charged a fine of: " + loan.getFine());
+		            	break;
 		            case 'X':
 
 		               System.out.println("Exited");
