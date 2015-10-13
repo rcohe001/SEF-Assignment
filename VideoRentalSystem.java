@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class VideoRentalSystem {
 
-	private ArrayList<Customer> custs = new ArrayList<Customer>();
-	private ArrayList<Movie> movie = new ArrayList<Movie>();
-	private ArrayList<Clerk> emp = new ArrayList<Clerk>();
+	public ArrayList<Customer> custs = new ArrayList<Customer>();
+	public ArrayList<Movie> movie = new ArrayList<Movie>();
+	public ArrayList<Clerk> emp = new ArrayList<Clerk>();
 	private Clerk clerk = null;
-	public Loan loan = new Loan();
+	public Loan loan = new Loan(movie);
+	public LoanItem item = new LoanItem();
 	
 	private static final Scanner sc = new Scanner(System.in);
 	
@@ -197,14 +198,22 @@ public class VideoRentalSystem {
 		               
 		            case 'C':
 		            	System.out.println("Enter due date: 'dd-MM-yyyy'");
-		            	loan.dateDue = sc.nextLine();
-		            	loan.enterDueDate(loan.dateDue);
-		            	loan.printMovieDetails();
+		            	String enteredDate = sc.nextLine();
+		               	System.out.println("Enter movie Title: ");
+		             	String enteredTitle = sc.nextLine();
+		             	
+		            	loan.setDateDue(enteredDate); 
+		            	loan.printMovieDetails(movie, enteredTitle);
 		            	break;
+		            	
 		            case 'D':
-		            	System.out.println("Due date: " + loan.getDateDue());
-		            	loan.enterActualDate();
-		            	loan.calcFine();
+		            	System.out.println("Enter return date: 'dd-MM-yyyy'");
+		            	String returnedDate = sc.nextLine();
+		               	System.out.println("Enter movie Title: ");
+		             	String returnedTitle = sc.nextLine();
+		             	
+
+		            	loan.calcFine(movie, returnedTitle, returnedDate);
 		            	System.out.println("You have been charged a fine of: " + loan.getFine());
 		            	break;
 		            case 'X':
