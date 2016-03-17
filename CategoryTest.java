@@ -10,7 +10,7 @@ public class CategoryTest {
   JUnit test = new JUnit();
   String result = test.Categories("Comedy", "Drama", "Action", "Family" );
   assertEquals("ComedyDramaActionFamily", result);
-  
+  //test
  }
 
 }
